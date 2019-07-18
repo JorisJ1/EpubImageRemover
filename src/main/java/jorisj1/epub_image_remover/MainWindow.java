@@ -12,12 +12,10 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -28,7 +26,6 @@ import net.lingala.zip4j.model.FileHeader;
 public class MainWindow {
 
 	private JFrame frmEpubImageRemover;
-	private JTextField txtFolder;
 	private JList<String> listFiles;
 
 	private ArrayList<Path> filePaths;
@@ -72,7 +69,7 @@ public class MainWindow {
 		listFiles.setBounds(10, 46, 397, 330);
 		frmEpubImageRemover.getContentPane().add(listFiles);
 
-		JButton btnBrowse = new JButton("Browse...");
+		JButton btnBrowse = new JButton("Select .epub files...");
 		btnBrowse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -87,13 +84,8 @@ public class MainWindow {
 				}
 			}
 		});
-		btnBrowse.setBounds(320, 11, 87, 24);
+		btnBrowse.setBounds(267, 11, 140, 24);
 		frmEpubImageRemover.getContentPane().add(btnBrowse);
-
-		txtFolder = new JTextField();
-		txtFolder.setBounds(10, 11, 300, 24);
-		frmEpubImageRemover.getContentPane().add(txtFolder);
-		txtFolder.setColumns(10);
 
 		JButton btnRemoveImages = new JButton("Remove Images");
 		btnRemoveImages.addMouseListener(new MouseAdapter() {
@@ -110,10 +102,6 @@ public class MainWindow {
 		});
 		btnRemoveImages.setBounds(267, 387, 140, 23);
 		frmEpubImageRemover.getContentPane().add(btnRemoveImages);
-
-		JCheckBox chckbxDeleteCoverImage = new JCheckBox("Delete cover images");
-		chckbxDeleteCoverImage.setBounds(10, 387, 146, 23);
-		frmEpubImageRemover.getContentPane().add(chckbxDeleteCoverImage);
 	}
 
 	private void removeImagesFromZipFile(String path) {
